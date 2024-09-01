@@ -5,4 +5,4 @@ authors = ["Elli"]
 edition = "2021"
 
 [dependencies]
-gtk = { git = "https://github.com/gtk-rs/gtk3-rs.git" }
+iced = "0.12.1"
