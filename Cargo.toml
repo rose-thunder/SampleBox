@@ -1,0 +1,8 @@
+[package]
+name = "samplebox"
+version = "0.1.0"
+authors = ["Elli"]
+edition = "2021"
+
+[dependencies]
+gtk = { version = "0.9.1", package = "gtk4", features = ["v4_12"] }
