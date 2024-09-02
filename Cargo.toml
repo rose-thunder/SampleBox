@@ -5,4 +5,5 @@ authors = ["Elli"]
 edition = "2021"
 
 [dependencies]
-gtk = { version = "0.9.1", package = "gtk4", features = ["v4_12"] }
+iced = "0.12.1"
+rand = "0.8.5"
