@@ -1,42 +1,31 @@
-use gtk::{glib, Application, ApplicationWindow};
-use gtk::{prelude::*, Button};
+use iced::executor;
+use iced::{Application, Command, Element, Settings, Theme};
 
-const APP_ID: &str = "org.gtk_rs.HelloWorld2";
-
-fn main() -> glib::ExitCode {
-    // Create a new application
-    let app = Application::builder().application_id(APP_ID).build();
-
-    // Connect app to "activate" signal of 'app'
-    app.connect_activate(build_ui);
-
-    // Run the application
-    app.run()
+pub fn main() -> iced::Result {
+    Hello::run(Settings::default())
 }
 
-fn build_ui(app: &Application) {
-    // Create a button with label and margins
-    let button = Button::builder()
-        .label("Press Me!")
-        .margin_top(12)
-        .margin_bottom(12)
-        .margin_start(12)
-        .margin_end(12)
-        .build();
+struct Hello;
 
-    // Connect to "clicked" signal of 'button'
-    button.connect_clicked(|button| {
-        // Set the label to "Hello World!" after the button has been clicked on
-        button.set_label("Hello World!");
-    });
+impl Application for Hello {
+    type Executor = executor::Default;
+    type Flags = ();
+    type Message = ();
+    type Theme = Theme;
 
-    // Create a window and set the title
-    let window = ApplicationWindow::builder()
-        .application(app)
-        .title("SampleBox")
-        .child(&button)
-        .build();
+    fn new(_flags: Self::Flags) -> (Self, Command<Self::Message>) {
+        (Hello, Command::none())
+    }
 
-    // Present window
-    window.present();
+    fn title(&self) -> String {
+        String::from("A cool application")
+    }
+
+    fn update(&mut self, _message: Self::Message) -> Command<Self::Message> {
+        Command::none()
+    }
+
+    fn view(&self) -> Element<'_, Self::Message, Self::Theme, iced::Renderer> {
+        "Hello, world!".into()
+    }
 }
