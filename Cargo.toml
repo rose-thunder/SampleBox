@@ -1,9 +1,10 @@
 [package]
 name = "samplebox"
 version = "0.1.0"
-authors = ["Elli"]
+authors = ["Elli https://github.com/rose-thunder"]
 edition = "2021"
 
 [dependencies]
 iced = "0.12.1"
 rand = "0.8.5"
+walkdir = "2.5.0"

@@ -1,31 +1,40 @@
-use iced::executor;
-use iced::{Application, Command, Element, Settings, Theme};
+use iced::widget::{container, text};
+use iced::{alignment, Element, Length, Sandbox, Settings};
 
-pub fn main() -> iced::Result {
-    Hello::run(Settings::default())
+fn main() -> iced::Result {
+    SampleBox::run(Settings::default())
 }
 
-struct Hello;
+struct SampleBox {}
 
-impl Application for Hello {
-    type Executor = executor::Default;
-    type Flags = ();
-    type Message = ();
-    type Theme = Theme;
+#[derive(Debug, Clone)]
+enum Message {}
 
-    fn new(_flags: Self::Flags) -> (Self, Command<Self::Message>) {
-        (Hello, Command::none())
+impl Sandbox for SampleBox {
+    type Message = Message;
+
+    fn new() -> SampleBox {
+        Self {}
     }
 
     fn title(&self) -> String {
-        String::from("A cool application")
+        String::from("SampleBox")
     }
 
-    fn update(&mut self, _message: Self::Message) -> Command<Self::Message> {
-        Command::none()
+    fn update(&mut self, _message: Self::Message) {
+        // Update the state of your app
     }
 
-    fn view(&self) -> Element<'_, Self::Message, Self::Theme, iced::Renderer> {
-        "Hello, world!".into()
+    fn view(&self) -> Element<'_, Self::Message> {
+        container(text("Hello World"))
+            .height(Length::Fill)
+            .width(Length::Fill)
+            .align_x(alignment::Horizontal::Center)
+            .align_y(alignment::Vertical::Center)
+            .into()
+    }
+
+    fn theme(&self) -> iced::Theme {
+        iced::Theme::CatppuccinMocha
     }
 }
