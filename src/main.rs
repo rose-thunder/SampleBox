@@ -1,4 +1,4 @@
-use iced::widget::{column, container, text, Column};
+use iced::widget::{container, text, Column};
 use iced::{alignment, Element, Length, Sandbox, Settings};
 
 fn main() -> iced::Result {
